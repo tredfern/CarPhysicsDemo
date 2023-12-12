@@ -1,6 +1,6 @@
 // Layers for drawing, makes it easier to rearrange and move objects around in the future
 #macro LAYER_TIRES "Underbody"
-
+#macro LAYER_GROUND "Ground"
 
 
 // This should match the room physics configuration

@@ -38,8 +38,16 @@ var _slipAngleRear = arctan2(_lateralVelocity + _yawSpeedRear, abs(_forwardVeloc
 var _tireGripFront = tireGrip;
 var _tireGripRear = tireGrip * (1 - emergencyBrake * (1 - lockGrip));	// Rear can slip when ebrake is enabled
 
-var _frictionForceFront = clamp(-cornerStiffnessFront * _slipAngleFront, -_tireGripFront, _tireGripFront) * _axleWeightFront;
-var _frictionForceRear = clamp(-cornerStiffnessRear * _slipAngleRear, -_tireGripRear, _tireGripRear) * _axleWeightRear;
+var _frontCornering = clamp(-cornerStiffnessFront * _slipAngleFront, -_tireGripFront, _tireGripFront);
+var _rearCornering = clamp(-cornerStiffnessRear * _slipAngleRear, -_tireGripRear, _tireGripRear);
+
+var _frictionForceFront = _frontCornering * _axleWeightFront;
+var _frictionForceRear = _rearCornering * _axleWeightRear;
+
+// Set we are skidding if we max out the force and exceed the tire grip
+var _frontSkidding = abs(_frontCornering) == _tireGripFront;
+var _rearSkidding = abs(_rearCornering) == _tireGripRear;
+
 
 var _brakePower = min(brake * brakeForce + emergencyBrake * eBrakeForce, brakeForce);
 var _accelPower = throttle * engineForce;
@@ -69,6 +77,13 @@ yawRate += _angularAccel * FRAME_RATE_TIME;
 x += convertMetersPerSecondToPixels(velocity.x);
 y += convertMetersPerSecondToPixels(velocity.y);
 image_angle += radtodeg(yawRate) * FRAME_RATE_TIME;
+
+
+//Update tire states
+frontLeftTire.isSkidding = _frontSkidding;
+frontRightTire.isSkidding = _frontSkidding;
+rearRightTire.isSkidding = _rearSkidding;
+rearLeftTire.isSkidding = _rearSkidding;
 
 
 //Statistics - Useful for debugging
