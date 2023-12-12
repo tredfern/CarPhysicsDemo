@@ -22,6 +22,7 @@
     {"name":"scrTransform","order":3,"path":"scripts/scrTransform/scrTransform.yy",},
     {"name":"groundTiles","order":2,"path":"sprites/groundTiles/groundTiles.yy",},
     {"name":"objBase","order":3,"path":"objects/objBase/objBase.yy",},
+    {"name":"objInstructions","order":5,"path":"objects/objInstructions/objInstructions.yy",},
     {"name":"objStatsDisplay","order":4,"path":"objects/objStatsDisplay/objStatsDisplay.yy",},
     {"name":"scrUtility","order":2,"path":"scripts/scrUtility/scrUtility.yy",},
     {"name":"objCamera","order":2,"path":"objects/objCamera/objCamera.yy",},

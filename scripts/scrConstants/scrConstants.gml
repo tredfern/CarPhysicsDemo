@@ -13,5 +13,5 @@
 #macro INERTIA_SCALE 1
 
 // How fast the wheels turns (degrees per frame)
-#macro STEERING_INCREMENT 1.2	
-#macro THROTTLE_INCREMENT 0.1
+#macro STEERING_INCREMENT 0.8	
+#macro THROTTLE_INCREMENT 0.15

@@ -7,6 +7,7 @@ for(var i = 0; i < array_length(stats); i++) {
 	_string += string("{0}: {1}\n", _val[0], string_format(_val[1], 5, 4));
 }
 
+draw_set_font(fntDisplay);
 draw_set_color(c_black);
 draw_text(0, 0, _string);
 
